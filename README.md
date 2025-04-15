@@ -1,8 +1,8 @@
-📬  # Automação de E-mails N8N 
+# Automação de E-mails N8N 
 
-🔍 ## Descrição do Projeto
+## Descrição do Projeto
 
-Este fluxo de automação foi desenvolvido para o time financeiro, 
+📬Este fluxo de automação foi desenvolvido para o time financeiro, 
 com o objetivo de automatizar o processo de recebimento de e-mails com anexos em formato CSV.
 
 🛠️ A automação realiza os seguintes passos:
@@ -25,7 +25,7 @@ com o objetivo de automatizar o processo de recebimento de e-mails com anexos em
 
 ## Passo a Passo para Configuração
 
-📬  ### Passo 1: Configurar o Gatilho de E-mail
+### Passo 1: Configurar o Gatilho de E-mail
 
 1. **Gmail Trigger**: Adicione um "Gmail Trigger" no n8n e configure-o no modo "Every Minute" para verificar novos e-mails a cada minuto.
    - **Evento**: `Message Received`
@@ -33,35 +33,35 @@ com o objetivo de automatizar o processo de recebimento de e-mails com anexos em
      - `Unread emails only` para filtrar e-mails não lidos.
      - Habilite o download de anexos (prefixo "attachment").
 
-📁 ### Passo 2: Filtrar e Extrair o Arquivo CSV
+ ### Passo 2: 📁 Filtrar e Extrair o Arquivo CSV
 
 1. **Filter Node**: Adicione um nó de filtro para verificar se o e-mail contém um anexo. Utilize a condição `attachment` para identificar os e-mails com anexo.
 
-📁 ### Passo 3: Baixar o Anexo
+### Passo 3: 📁 Baixar o Anexo
 
 1. **Gmail Get: Message**: Adicione um nó "Gmail Get: Message" para obter o conteúdo do e-mail e baixar o anexo.
    - Conecte suas credenciais do Gmail.
    - Habilite o download dos anexos.
    - O arquivo será identificado pelo prefixo "attachment" e estará disponível para os próximos passos.
 
-📁 ### Passo 4: Salvar o Arquivo CSV no Google Drive
+ ### Passo 4: 📁 Salvar o Arquivo CSV no Google Drive
 
 1. **Google Drive**: Adicione um nó "Google Drive" para fazer o upload do arquivo CSV em uma pasta específica.
    - **Autenticação**: Autorize o n8n a acessar sua conta do Google Drive.
    - **Pasta de Destino**: Crie uma pasta chamada "Arquivos CSV" no Google Drive e configure o nó para fazer o upload do arquivo na pasta.
 
-📬 ### Passo 5: Enviar o E-mail de Confirmação
+### Passo 5: 📬  Enviar o E-mail de Confirmação
 
 1. **Gmail Send: Message**: Adicione um nó "Send Email" para enviar uma confirmação ao remetente.
    - **To**: Utilize a variável que identifica o e-mail do remetente.
    - **Subject**: Defina o mesmo assunto do e-mail original.
    - **Message**: Exemplo de mensagem: "Arquivo CSV recebido com sucesso!"
 
-📬 ### Passo 6: Marcar o E-mail como Lido
+ ### Passo 6: 📬 Marcar o E-mail como Lido
 
 1. **Gmail Mark as Read**: Adicione um nó "Mark as Read" para marcar o e-mail como lido após o processamento, evitando que ele passe novamente pelo fluxo.
 
-🌐 ### Conectar os Nós
+ ### Conectar os Nós 🌐
 
 Conecte os nós na seguinte ordem:
 
@@ -69,7 +69,7 @@ Conecte os nós na seguinte ordem:
 Gmail Trigger → Filter → Gmail Get: Message → Google Drive → Gmail Send: Message → Gmail Mark as Read → Fim
 ```
 
-🌐 ## Configuração das Credenciais IMAP do Gmail
+## Configuração das Credenciais IMAP do Gmail 🌐
 
 Para configurar o n8n com o Gmail, siga as instruções abaixo:
 
@@ -82,12 +82,12 @@ Para configurar o n8n com o Gmail, siga as instruções abaixo:
    - **Senha**: Senha do aplicativo gerada
 
 
-👉 ## Links Úteis
+ ## Links Úteis
 
-- [Documentação do IMAP no n8n](https://docs.n8n.io/integrations/builtin/credentials/imap/gmail/)
-- [Documentação do Google Drive no n8n](https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.googledrive/file-operations/)
-- [Documentação de credenciais do Google OAuth](https://docs.n8n.io/integrations/builtin/credentials/google/oauth-generic/)
+👉 [Documentação do IMAP no n8n](https://docs.n8n.io/integrations/builtin/credentials/imap/gmail/)
+👉 [Documentação do Google Drive no n8n](https://docs.n8n.io/integrations/builtin/app-nodes/n8n-nodes-base.googledrive/file-operations/)
+👉 [Documentação de credenciais do Google OAuth](https://docs.n8n.io/integrations/builtin/credentials/google/oauth-generic/)
 
-👉 ## Considerações Finais
+ ## Considerações Finais
 
-Este fluxo pode ser adaptado para outros tipos de e-mails ou anexos, e você pode expandir a automação com mais funcionalidades, como o envio de relatórios ou a execução de tarefas adicionais após o recebimento dos arquivos CSV.
+👉 Este fluxo pode ser adaptado para outros tipos de e-mails ou anexos, e você pode expandir a automação com mais funcionalidades, como o envio de relatórios ou a execução de tarefas adicionais após o recebimento dos arquivos CSV.
